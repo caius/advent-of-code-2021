@@ -35,8 +35,6 @@ func main() {
 		switch command {
 		case "forward":
 			sub.Horizontal += distance
-		case "backward":
-			sub.Horizontal -= distance
 		case "up":
 			sub.Vertical -= distance
 		case "down":
