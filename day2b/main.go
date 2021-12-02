@@ -14,6 +14,19 @@ type Submarine struct {
 	Aim        int
 }
 
+func (s *Submarine) MoveForward(distance int) {
+	s.Horizontal += distance
+	s.Vertical += (s.Aim * distance)
+}
+
+func (s *Submarine) MoveUp(distance int) {
+	s.Aim -= distance
+}
+
+func (s *Submarine) MoveDown(distance int) {
+	s.Aim += distance
+}
+
 func (s Submarine) Stats() string {
 	return fmt.Sprintf("Horizontal: %d\nVertical: %d\nPosition: %d", s.Horizontal, s.Vertical, (s.Horizontal * s.Vertical))
 }
@@ -35,12 +48,11 @@ func main() {
 
 		switch command {
 		case "forward":
-			sub.Horizontal += distance
-			sub.Vertical += (sub.Aim * distance)
+			sub.MoveForward(distance)
 		case "up":
-			sub.Aim -= distance
+			sub.MoveUp(distance)
 		case "down":
-			sub.Aim += distance
+			sub.MoveDown(distance)
 		default:
 			panic("Unknown command")
 		}
